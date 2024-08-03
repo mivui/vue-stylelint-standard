@@ -31,6 +31,5 @@ export function defineConfig(config?: DefineConfig): Config {
       ],
       ...rules,
     },
-    fix: true,
   };
 }
