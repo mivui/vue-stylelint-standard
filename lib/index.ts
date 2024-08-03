@@ -6,7 +6,7 @@ export interface DefineConfig {
   rules?: Config['rules'];
 }
 
-export default function defineConfig(config?: DefineConfig): Config {
+export function defineConfig(config?: DefineConfig): Config {
   const { extends: inherit, plugins, rules } = config ?? {};
   const getExtends = inherit ?? [];
   const getPlugins = plugins ?? [];
