@@ -15,9 +15,9 @@ npm i vue-stylelint-standard -D
 ### stylelint.config.js
 
 ```js
-import vueStylelint from 'vue-stylelint-standard';
+import { defineConfig } from 'vue-stylelint-standard';
 
-export default vueStylelint;
+export default defineConfig();
 
 ```
 

@@ -1,23 +1,36 @@
-import { type Config } from 'stylelint';
+import type { Config } from 'stylelint';
 
-const config: Config = {
-  extends: [
-    'stylelint-config-recommended',
-    'stylelint-prettier/recommended',
-    'stylelint-config-recommended-scss',
-    'stylelint-config-recommended-vue/scss',
-  ],
-  plugins: ['stylelint-prettier', 'stylelint-order'],
-  rules: {
-    'prettier/prettier': true,
-    'order/order': ['custom-properties', 'declarations'],
-    'order/properties-order': ['width', 'height'],
-    'selector-pseudo-class-no-unknown': [
-      true,
-      {
-        ignorePseudoClasses: ['deep', 'v-deep', 'v-bind', 'global', 'v-global', 'slotted', 'v-slotted'],
-      },
+export interface DefineConfig {
+  extends?: string[];
+  plugins?: string[];
+  rules?: Config['rules'];
+}
+
+export default function defineConfig(config?: DefineConfig): Config {
+  const { extends: inherit, plugins, rules } = config ?? {};
+  const getExtends = inherit ?? [];
+  const getPlugins = plugins ?? [];
+  return {
+    extends: [
+      'stylelint-config-recommended',
+      'stylelint-prettier/recommended',
+      'stylelint-config-recommended-scss',
+      'stylelint-config-recommended-vue/scss',
+      ...getExtends,
     ],
-  },
-};
-export default config;
+    plugins: ['stylelint-prettier', 'stylelint-order', ...getPlugins],
+    rules: {
+      'prettier/prettier': true,
+      'order/order': ['custom-properties', 'declarations'],
+      'order/properties-order': ['width', 'height'],
+      'selector-pseudo-class-no-unknown': [
+        true,
+        {
+          ignorePseudoClasses: ['deep', 'v-deep', 'v-bind', 'global', 'v-global', 'slotted', 'v-slotted'],
+        },
+      ],
+      ...rules,
+    },
+    fix: true,
+  };
+}
