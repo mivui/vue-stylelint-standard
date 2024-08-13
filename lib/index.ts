@@ -26,7 +26,15 @@ export function defineConfig(config?: DefineConfig): Config {
       'selector-pseudo-class-no-unknown': [
         true,
         {
-          ignorePseudoClasses: ['deep', 'v-deep', 'v-bind', 'global', 'v-global', 'slotted', 'v-slotted'],
+          ignorePseudoClasses: [
+            'deep',
+            'v-deep',
+            'v-bind',
+            'global',
+            'v-global',
+            'slotted',
+            'v-slotted',
+          ],
         },
       ],
       ...rules,
