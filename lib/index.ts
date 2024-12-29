@@ -21,6 +21,7 @@ export function defineConfig(config?: DefineConfig): Config {
     plugins: ['stylelint-prettier', 'stylelint-order', ...getPlugins],
     rules: {
       'prettier/prettier': true,
+      'no-descending-specificity': null,
       'order/order': ['custom-properties', 'declarations'],
       'order/properties-order': ['width', 'height'],
       'selector-pseudo-class-no-unknown': [
