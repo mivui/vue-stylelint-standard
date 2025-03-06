@@ -22,6 +22,7 @@ export function defineConfig(config?: DefineConfig): Config {
     rules: {
       'prettier/prettier': true,
       'no-descending-specificity': null,
+      'declaration-property-value-no-unknown': null,
       'order/order': ['custom-properties', 'declarations'],
       'order/properties-order': ['width', 'height'],
       'selector-pseudo-class-no-unknown': [
